@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "569442823893",
+    "firebase_url": "https://splashtrash.firebaseio.com",
+    "project_id": "splashtrash",
+    "storage_bucket": "splashtrash.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569442823893:android:0ad2f96dcc836cb2ca7c5c",
+        "android_client_info": {
+          "package_name": "com.example.splashtrash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569442823893-nbk98cjc711sh1p085vmdhb9obbtdrbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUsOMPG3sEnTPwfQPUyyjTT-DOk4ZKKXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569442823893-nbk98cjc711sh1p085vmdhb9obbtdrbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
