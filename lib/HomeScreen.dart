@@ -14,7 +14,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:native_video_view/native_video_view.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:splashtrash/payment/pay.dart';
 import 'package:splashtrash/payment/payment-service.dart';
 import 'package:splashtrash/viewlecturer.dart';
 import 'package:video_player/video_player.dart';
@@ -1115,34 +1114,7 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
               ),
             ),
 
-            SizedBox(height: 50), // give it width
-            payment = GradientButton(
-              increaseWidthBy: 70,
-              increaseHeightBy: 5,
-              shapeRadius: BorderRadius.circular(18),
-              callback: () {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => pay()));
-                  // Add Your Code here.
-                });
-                // add your code here.
-                // vc.play();
-                // Navigator.pop(context);
-                /*       setState(() {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => pay()));
-                });*/
-              },
-              gradient: Gradients.cosmicFusion,
-              shadowColor: Gradients.cosmicFusion.colors.last.withOpacity(0.9),
-              child: Text(
-                'Pay',
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-                textDirection: TextDirection.ltr,
-              ),
-            ),
+            // give it width
           ],
         ));
     // set up the buttons
@@ -1152,8 +1124,8 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
 
       /// backgroundColor: Color.fromRGBO(255, 0, 0, 0.5),
       actions: [
-        videos,
-        payment,
+        videos
+        //  payment,
       ],
     );
 

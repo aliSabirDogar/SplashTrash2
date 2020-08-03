@@ -326,14 +326,16 @@ class _EditorState extends State<Editor> {
         child: _videoPlayerController.value.initialized
             ? Stack(
                 children: <Widget>[
-                  Expanded(
-                    /*  height: height / 1.7,
+                  Row(children: [
+                    Expanded(
+                      /*  height: height / 1.7,
                     padding: EdgeInsets.fromLTRB(width / 10, 20, width / 10, 0),*/
-                    child: AspectRatio(
-                      aspectRatio: _videoPlayerController.value.aspectRatio,
-                      child: VideoPlayer(_videoPlayerController),
-                    ),
-                  ),
+                      child: AspectRatio(
+                        aspectRatio: _videoPlayerController.value.aspectRatio,
+                        child: VideoPlayer(_videoPlayerController),
+                      ),
+                    )
+                  ]),
                   progress
                       ? Positioned(
                           top: height / 1.5,
