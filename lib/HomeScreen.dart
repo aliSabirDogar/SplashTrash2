@@ -699,6 +699,21 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
                 // vc.play();
                 // Navigator.pop(context);
                 setState(() {
+                  /*   final fb = FirebaseDatabase.instance;
+
+                  var ref = null;
+
+                  ref = fb.reference();
+
+                  for (int i = 1; i <= 58; i++) {
+                    ref
+                        .child("Videos")
+                        .child(sport)
+                        .child("miss")
+                        .child(i.toString())
+                        .set("miss");
+                    // ref.child("Videos").child(sport).child("miss").set(i.toString());
+                  }*/
                   showAlertDialogSettings(context);
                 });
               });
@@ -1114,7 +1129,16 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
               ),
             ),
 
-            // give it width
+            SizedBox(height: 50), // give it width
+            payment = FlatButton(
+              color: Color.fromRGBO(255, 255, 255, 0.5),
+              child: Text(
+                '',
+                style: TextStyle(fontSize: 20),
+                textAlign: TextAlign.center,
+                textDirection: TextDirection.ltr,
+              ),
+            ),
           ],
         ));
     // set up the buttons
@@ -1124,8 +1148,8 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
 
       /// backgroundColor: Color.fromRGBO(255, 0, 0, 0.5),
       actions: [
-        videos
-        //  payment,
+        videos,
+        payment,
       ],
     );
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:splashtrash/loginPage.dart';
+import 'package:splashtrash/ChooseSport.dart';
 
 class WelcomePage extends StatefulWidget {
   WelcomePage({Key key, this.title}) : super(key: key);
@@ -20,8 +20,11 @@ class _WelcomePageState extends State<WelcomePage> {
     Future.delayed(
         Duration(seconds: 4),
         () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginPage())));
-
+            context, MaterialPageRoute(builder: (context) => ChooseSport())));
+/*    Future.delayed(
+        Duration(seconds: 4),
+        () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginPage())));*/
     return Scaffold(
       backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
       body: Column(

@@ -279,7 +279,7 @@ class _LoginPageState extends State<LoginPage> {
     // });
   }
 
-  Widget _instaButton() {
+/*  Widget _instaButton() {
     return InkWell(
         onTap: () async {
           perform_login_insta();
@@ -309,7 +309,7 @@ class _LoginPageState extends State<LoginPage> {
             style: TextStyle(fontSize: 15, color: Colors.white),
           ),
         ));
-  }
+  }*/
 
   CheckLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -558,7 +558,7 @@ class _LoginPageState extends State<LoginPage> {
                   //_divider(),
                   _facebookButton(),
                   // _divider(),
-                  _instaButton(),
+                 // _instaButton(),
                   SizedBox(height: height * .055),
                   /*   _createAccountLabel(),*/
                 ],

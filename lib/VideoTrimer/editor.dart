@@ -10,7 +10,6 @@ import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:native_video_view/native_video_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:splashtrash/VideoTrimer/rangeslider.dart';
 import 'package:video_player/video_player.dart';
 
 // ignore: must_be_immutable
@@ -372,7 +371,6 @@ class _EditorState extends State<Editor> {
                       child: SliderTheme(
                         data: SliderThemeData(
                           trackHeight: 20,
-                          rangeThumbShape: CustomRangeThumbShape(),
                           overlayShape:
                               RoundSliderOverlayShape(overlayRadius: 5),
                         ),
