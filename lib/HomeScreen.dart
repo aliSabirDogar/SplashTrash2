@@ -12,9 +12,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:native_video_view/native_video_view.dart';
-import 'package:progress_dialog/progress_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:splashtrash/payment/payment-service.dart';
 import 'package:splashtrash/viewlecturer.dart';
 import 'package:video_player/video_player.dart';
 
@@ -131,8 +129,6 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
 
   @override
   Future<void> initState() {
-    StripeService.init();
-
     GetVideoUrl();
 
     switch (initOption) {
@@ -178,7 +174,6 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
         };
 
         /// You can set the Banner, Fullscreen and Video Ads separately.
-
         ads.setBannerAd(
           adUnitId: bannerUnitId,
           size: AdSize.banner,
@@ -244,7 +239,6 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
         };
 
         /// You just show the Banner, Fullscreen and Video Ads separately.
-
         ads.showBannerAd(
           adUnitId: bannerUnitId,
           size: AdSize.banner,
@@ -638,21 +632,22 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
       GetVideoUrl();
     }
     /*.then((value) {
-
     });*/
 
     final FirebaseApp app = await FirebaseApp.configure(
-      name: 'SplashTrash',
+      name: 'splashtrash',
       options: FirebaseOptions(
-        googleAppID: '1:569442823893:android:0ad2f96dcc836cb2ca7c5c',
-        gcmSenderID: '569442823893',
-        apiKey: 'AIzaSyDUsOMPG3sEnTPwfQPUyyjTT-DOk4ZKKXw',
-        projectID: 'splashtrash',
+        googleAppID: '1:130127371510:android:d1217ea4ecc5700f38e0d7',
+        gcmSenderID: '130127371510',
+        apiKey: 'AIzaSyAjc2Dw1-5mvDXj_-L8mIxIaugUk4MoH_c',
+        projectID: 'splashtrash-368f0',
       ),
     );
     final FirebaseStorage storage = FirebaseStorage(
-        app: app, storageBucket: 'gs://splashtrash.appspot.com');
+        app: app, storageBucket: 'gs://splashtrash-368f0.appspot.com');
   }
+/*  FirebaseApp app = FirebaseApp.initializeApp(getApplicationContext(), options, "app");
+  FirebaseDatabase database = FirebaseDatabase.getInstance(app);*/
 
   @override
   Widget build(BuildContext context) {
@@ -699,13 +694,10 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
                 // vc.play();
                 // Navigator.pop(context);
                 setState(() {
-                  /*   final fb = FirebaseDatabase.instance;
-
+                  final fb = FirebaseDatabase.instance;
                   var ref = null;
-
                   ref = fb.reference();
-
-                  for (int i = 1; i <= 58; i++) {
+                  for (int i = 1; i <= 2; i++) {
                     ref
                         .child("Videos")
                         .child(sport)
@@ -713,8 +705,8 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
                         .child(i.toString())
                         .set("miss");
                     // ref.child("Videos").child(sport).child("miss").set(i.toString());
-                  }*/
-                  showAlertDialogSettings(context);
+                  }
+                  //  showAlertDialogSettings(context);
                 });
               });
             },
@@ -1075,31 +1067,6 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
         });
   }
 
-  payViaNewCard(BuildContext context) async {
-    //String convertedamount = amount.toString();
-    ProgressDialog dialog = new ProgressDialog(context);
-    dialog.style(message: 'Please wait...');
-    await dialog.show();
-    var response =
-        await StripeService.payWithNewCard(amount: amount, currency: 'USD');
-    await dialog.hide();
-    if (response.success == true) {
-      showAlertDialogPoints(context);
-      Navigator.of(context).pop(true);
-      payment_flag = 0;
-      GetVideoUrl();
-    } else {
-      Navigator.of(context).pop(true);
-      payment_flag = 0;
-      GetVideoUrl();
-    }
-    Scaffold.of(context).showSnackBar(SnackBar(
-      content: Text(response.message),
-      duration:
-          new Duration(milliseconds: response.success == true ? 1200 : 3000),
-    ));
-  }
-
   showAlertDialogSettings(BuildContext context) {
     //payment_flag = 1;
     vc.pause();
@@ -1150,133 +1117,6 @@ class _VideoPlayerScreenState extends State<HomeScreen> {
       actions: [
         videos,
         payment,
-      ],
-    );
-
-    // show the dialog
-
-    showDialog(
-        context: context,
-        builder: (context) {
-          return alert;
-        });
-  }
-
-  showAlertDialogPayment(BuildContext context) {
-    payment_flag = 1;
-    vc.pause();
-    Widget cancelButton;
-    Widget continueButton, pay1, pay2, pay3, pay4;
-    Widget points, point2, point3, point4;
-    Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        alignment: Alignment.center,
-        child: Wrap(
-          children: <Widget>[
-            points = Align(
-              alignment: Alignment.center,
-              child: Text(
-                ' .99c for a 100 points',
-                style: TextStyle(fontSize: 20, color: Color(0xfffbb448)),
-                textAlign: TextAlign.center,
-              ),
-            ),
-
-            SizedBox(height: 50), // give it width
-            pay1 = GradientButton(
-              increaseWidthBy: 70,
-              increaseHeightBy: 5,
-              shapeRadius: BorderRadius.circular(18),
-              callback: () {
-                amount = '0.0099';
-                earned_points = "100";
-                // vc.play();
-                // Navigator.pop(context);
-                payViaNewCard(context);
-              },
-              gradient: Gradients.cosmicFusion,
-              shadowColor: Gradients.cosmicFusion.colors.last.withOpacity(0.9),
-              child: Text(
-                'Pay',
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-                textDirection: TextDirection.ltr,
-              ),
-            ),
-
-            point2 = Align(
-              alignment: Alignment.center,
-              child: Text(
-                ' 2.99c for 500 points',
-                style: TextStyle(fontSize: 20, color: Color(0xfffbb448)),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: 50), // give it width
-            pay2 = GradientButton(
-              increaseWidthBy: 70,
-              increaseHeightBy: 5,
-              shapeRadius: BorderRadius.circular(18),
-              callback: () {
-                amount = '0.029900000000000003';
-                earned_points = "500";
-                //Navigator.pop(context);
-                payViaNewCard(context);
-              },
-              gradient: Gradients.cosmicFusion,
-              shadowColor: Gradients.cosmicFusion.colors.last.withOpacity(0.9),
-              child: Text(
-                'Pay',
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-                textDirection: TextDirection.ltr,
-              ),
-            ),
-
-            point3 = Align(
-              alignment: Alignment.center,
-              child: Text(
-                '4.99c for 2000 points',
-                style: TextStyle(fontSize: 20, color: Color(0xfffbb448)),
-                textAlign: TextAlign.center,
-              ),
-            ),
-
-            SizedBox(height: 50), // give it width
-            pay3 = GradientButton(
-              increaseWidthBy: 70,
-              increaseHeightBy: 5,
-              shapeRadius: BorderRadius.circular(18),
-              callback: () {
-                amount = '0.0499';
-                earned_points = "2000";
-                // Navigator.pop(context);
-                payViaNewCard(context);
-              },
-              gradient: Gradients.cosmicFusion,
-              shadowColor: Gradients.cosmicFusion.colors.last.withOpacity(0.9),
-              child: Text(
-                'Pay',
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-                textDirection: TextDirection.ltr,
-              ),
-            ),
-          ],
-        ));
-    // set up the buttons
-
-    AlertDialog alert = AlertDialog(
-      backgroundColor: Colors.black12.withOpacity(0),
-
-      /// backgroundColor: Color.fromRGBO(255, 0, 0, 0.5),
-      actions: [
-        points,
-        pay1,
-        point2,
-        pay2,
-        point3,
-        pay3,
       ],
     );
 

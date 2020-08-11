@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:569442823893:android:0ad2f96dcc836cb2ca7c5c",
+        "mobilesdk_app_id": "1:569442823893:android:e52682209f76350aca7c5c",
         "android_client_info": {
-          "package_name": "com.example.splashtrash"
+          "package_name": "com.gameSplashTrash.splashtrash"
         }
       },
       "oauth_client": [
@@ -30,6 +30,13 @@
             {
               "client_id": "569442823893-nbk98cjc711sh1p085vmdhb9obbtdrbs.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "569442823893-upkmhc6dvrcednai3cnuil159n0uf1a7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gameSplashTrash.splashtrash"
+              }
             }
           ]
         }

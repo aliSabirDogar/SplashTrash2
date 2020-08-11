@@ -558,7 +558,7 @@ class _LoginPageState extends State<LoginPage> {
                   //_divider(),
                   _facebookButton(),
                   // _divider(),
-                 // _instaButton(),
+                  // _instaButton(),
                   SizedBox(height: height * .055),
                   /*   _createAccountLabel(),*/
                 ],
